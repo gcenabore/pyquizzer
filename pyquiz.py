@@ -76,5 +76,14 @@ def user_info():
 
     except ValueError:
         print("Invalid: An error occurred. Please try again.")
-    
+
 user_info()
+
+def quiz(questions):
+    score = 0
+    for question in questions:
+        print(question["question"])
+        for option in question["options"]:
+            print(option)
+
+quiz(questions)
