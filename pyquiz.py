@@ -39,43 +39,26 @@ questions = [
 
 ]
 def user_info():
-    try:
-        while True:
+
+    while True:
+        try:
             full_name = input("Please enter your Full Name: ").split()
-            first_name = full_name[0]
-            surname = full_name[1]
 
-            if first_name.isalpha() and surname.isalpha():
-                break
+            if len(full_name) < 2 or not all(name.isalpha() for name in full_name):
+                raise ValueError("Invalid: Enter a valid FULL NAME")
 
-            else:
-                print("Invalid: Enter a valid name")
-
-    except IndexError:
-        print("Invalid: An error occurred. Please try again.")
-    
-    try:
-        while True:
             age = input("Please enter your Age: ")
+            if not age.isdigit():
+                raise ValueError("Invalid: Enter a DIGIT AGE")
+            digit = int(age)
 
-            if age.isdigit():
-                digit = int(age)
-                break
-            else:
-                print("Invalid: Enter a digit age")
-    except ValueError:
-        print("Invalid: An error occurred. Please try again.")
-    
-    try:
-        while True: 
             cys = input("Please enter your Course, Year, Section: ").upper()
-            if cys.strip():
-                break
-            else:
-                print("Invalid: Course, Year, Section cannot be empty.")
+            if not cys.strip():
+                raise ValueError("Invalid: Course, Year, Section cannot be EMPTY.")
+            break  
 
-    except ValueError:
-        print("Invalid: An error occurred. Please try again.")
+        except ValueError as e:
+            print(e)
 
 user_info()
 
