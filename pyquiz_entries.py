@@ -46,8 +46,3 @@ while True:
     if retry != "yes":
         break
 
-
-
-
-
-
