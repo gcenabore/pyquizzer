@@ -38,3 +38,20 @@ questions = [
     }
 
 ]
+def user_info():
+    try:
+        while True:
+            full_name = input("Please enter your Full Name: ").split()
+            first_name = full_name[0]
+            surname = full_name[1]
+
+            if first_name.isalpha() and surname.isalpha():
+                break
+
+            else:
+                print("Invalid: Enter a valid name")
+
+    except IndexError:
+        print("Invalid: An error occurred. Please try again.")
+
+user_info()
