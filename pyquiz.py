@@ -38,6 +38,29 @@ questions = [
     }
 
 ]
+
+separator = "=" * 50
+
+def start_quiz():
+    print(separator)
+    start = input("Are you ready to start the quiz? (yes/no): ").lower()
+    if start == "no":
+        print(separator)
+        print("                 Okay, Goodbye!")
+        print(separator)
+        exit()
+    else:
+        print(separator)
+        start == "yes"
+        print(separator)
+        print("                Welcome to the Python Quiz!",)
+        print("     You will be presented with 5 multiple choice questions.")
+        print("          Enter the letter of the correct answer.")
+        print("                   Let's get started!")
+        print(separator)
+
+start_quiz()
+
 def user_info():
 
     while True:
@@ -59,8 +82,8 @@ def user_info():
 
         except ValueError as e:
             print(e)
-
 user_info()
+
 
 def quiz(questions):
     score = 0
@@ -76,5 +99,4 @@ def quiz(questions):
         else:
             print("Incorrect!! Mali ka! Try again next time parekoy!")
     print(f"you got {score} out of {len(questions)} questions correct.")
-
 quiz(questions)
