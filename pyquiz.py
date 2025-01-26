@@ -86,5 +86,12 @@ def quiz(questions):
         for option in question["options"]:
             print(option)
         answer = input("Enter your answer: ").upper()
-        
+
+        if answer == question["answer"]:
+            print("Correct! yeheyy! Tama ka perd Congrats!!")
+            score += 1
+        else:
+            print("Incorrect!! Mali ka! Try again next time parekoy!")
+    print(f"you got {score} out of {len(questions)} questions correct.")
+
 quiz(questions)
