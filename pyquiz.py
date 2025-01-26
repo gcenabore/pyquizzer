@@ -53,5 +53,17 @@ def user_info():
 
     except IndexError:
         print("Invalid: An error occurred. Please try again.")
+    
+    try:
+        while True:
+            age = input("Please enter your Age: ")
 
+            if age.isdigit():
+                digit = int(age)
+                break
+            else:
+                print("Invalid: Enter a digit age")
+    except ValueError:
+        print("Invalid: An error occurred. Please try again.")
+    
 user_info()
