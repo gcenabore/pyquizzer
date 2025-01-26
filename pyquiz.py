@@ -5,6 +5,15 @@
 #count the number of correct answers
 #store the user's info and score in a txt file, to find their data later
 #display the user's score
+import time
+import sys
+
+def typing_animation(text, delay= 0.02):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(delay)
+    print()  # Move to the next line after the animation
 
 questions = [
     { 
@@ -46,24 +55,24 @@ def start_quiz():
     start = input("Are you ready to start the quiz? (yes/no): ").lower()
     if start == "no":
         print(separator)
-        print("                             Okay, Goodbye!")
+        typing_animation("                             Okay, Goodbye!                                    ")
         print(separator)
         exit()
     else:
         print(separator)
         start == "yes"
         print(separator)
-        print("                     Welcome to the Python Quiz!",)
-        print("          You will be presented with 5 multiple choice questions.")
-        print("               Enter the letter of the correct answer.")
-        print("                        Let's get started!")
+        typing_animation("                     Welcome to the Python Quiz!                     ",)
+        typing_animation("          You will be presented with 5 multiple choice questions.          ")
+        typing_animation("               Enter the letter of the correct answer.               ")
+        typing_animation("                        Let's get started!                        ")
         print(separator)
 
 start_quiz()
 
 def user_info(questions):
-    with open("user_info.txt", "a") as file:
 
+    with open("user_info.txt", "a") as file:
         while True:
             try:
                 full_name = input("Please enter your Full Name: ").split()
@@ -80,10 +89,8 @@ def user_info(questions):
                 if not cys.strip():
                     raise ValueError("Invalid: Course, Year, Section cannot be EMPTY.")
                 break  
-
             except ValueError as e:
                 print(e)
-            
             
         score = 0
         for question in questions:
@@ -101,6 +108,7 @@ def user_info(questions):
                 print(separator)
                 print("               Incorrect!! Mali ka! Try again next time parekoy!")
                 print(separator, "\n")
+
         print(separator)
         print("                         Quiz Completed!")
         print(f"              You got {score} out of {len(questions)} questions correct.")
