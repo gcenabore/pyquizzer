@@ -78,16 +78,16 @@ def user_info(questions):
                 full_name = input("Please enter your Full Name: ").split()
                 full_name = [name.title() for name in full_name]
                 if len(full_name) < 2 or not all(name.isalpha() for name in full_name):
-                    raise ValueError("Invalid: Enter a valid FULL NAME")
+                    raise ValueError(typing_animation("Invalid: Enter a valid FULL NAME"))
 
                 age = input("Please enter your Age: ")
                 if not age.isdigit():
-                    raise ValueError("Invalid: Enter a DIGIT AGE")
+                    raise ValueError(typing_animation("Invalid: Enter a DIGIT AGE"))
                 digit = int(age)
 
                 cys = input("Please enter your Course, Year, Section: ").upper()
                 if not cys.strip():
-                    raise ValueError("Invalid: Course, Year, Section cannot be EMPTY.")
+                    raise ValueError(typing_animation("Invalid: Course, Year, Section cannot be EMPTY."))
                 break  
             except ValueError as e:
                 print(e)
@@ -101,18 +101,18 @@ def user_info(questions):
 
             if answer == question["answer"]:
                 print(separator)
-                print("              Correct! yeheyy! Tama ka perd Congrats!!")
+                typing_animation("              Correct! yeheyy! Tama ka perd Congrats!!              ")
                 print(separator, "\n")
                 score += 1
             else:
                 print(separator)
-                print("               Incorrect!! Mali ka! Try again next time parekoy!")
+                typing_animation("               Incorrect!! Mali ka! Try again next time parekoy!               ")
                 print(separator, "\n")
 
         print(separator)
-        print("                         Quiz Completed!")
-        print(f"              You got {score} out of {len(questions)} questions correct.")
-        print("                  Thank you for participating!")
+        typing_animation("                         Quiz Completed!                         ")
+        typing_animation(f"              You got {score} out of {len(questions)} questions correct.              ")
+        typing_animation("                  Thank you for participating!                  ")
         print(separator)
 
         file.write(separator + "\n")
