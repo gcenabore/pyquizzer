@@ -66,4 +66,15 @@ def user_info():
     except ValueError:
         print("Invalid: An error occurred. Please try again.")
     
+    try:
+        while True: 
+            cys = input("Please enter your Course, Year, Section: ").upper()
+            if cys.strip():
+                break
+            else:
+                print("Invalid: Course, Year, Section cannot be empty.")
+
+    except ValueError:
+        print("Invalid: An error occurred. Please try again.")
+    
 user_info()
