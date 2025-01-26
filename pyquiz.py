@@ -78,17 +78,18 @@ def user_info(questions):
                 full_name = input("Please enter your Full Name: ").split()
                 full_name = [name.title() for name in full_name]
                 if len(full_name) < 2 or not all(name.isalpha() for name in full_name):
-                    raise ValueError(typing_animation("Invalid: Enter a valid FULL NAME"))
-
+                    raise ValueError("Invalid: Enter a valid FULL NAME")
+    
                 age = input("Please enter your Age: ")
                 if not age.isdigit():
-                    raise ValueError(typing_animation("Invalid: Enter a DIGIT AGE"))
+                    raise ValueError("Invalid: Enter a DIGIT AGE")
                 digit = int(age)
 
                 cys = input("Please enter your Course, Year, Section: ").upper()
                 if not cys.strip():
-                    raise ValueError(typing_animation("Invalid: Course, Year, Section cannot be EMPTY."))
+                    raise ValueError("Invalid: Course, Year, Section cannot be EMPTY.")
                 break  
+            
             except ValueError as e:
                 print(e)
             
