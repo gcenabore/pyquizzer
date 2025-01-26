@@ -61,51 +61,81 @@ def start_quiz():
 
 start_quiz()
 
-def user_info():
+def user_info(questions):
+    with open("user_info.txt", "a") as file:
 
-    while True:
-        try:
-            full_name = input("Please enter your Full Name: ").split()
+        while True:
+            try:
+                full_name = input("Please enter your Full Name: ").split()
 
-            if len(full_name) < 2 or not all(name.isalpha() for name in full_name):
-                raise ValueError("Invalid: Enter a valid FULL NAME")
+                if len(full_name) < 2 or not all(name.isalpha() for name in full_name):
+                    raise ValueError("Invalid: Enter a valid FULL NAME")
 
-            age = input("Please enter your Age: ")
-            if not age.isdigit():
-                raise ValueError("Invalid: Enter a DIGIT AGE")
-            digit = int(age)
+                age = input("Please enter your Age: ")
+                if not age.isdigit():
+                    raise ValueError("Invalid: Enter a DIGIT AGE")
+                digit = int(age)
 
-            cys = input("Please enter your Course, Year, Section: ").upper()
-            if not cys.strip():
-                raise ValueError("Invalid: Course, Year, Section cannot be EMPTY.")
-            break  
+                cys = input("Please enter your Course, Year, Section: ").upper()
+                if not cys.strip():
+                    raise ValueError("Invalid: Course, Year, Section cannot be EMPTY.")
+                break  
 
-        except ValueError as e:
-            print(e)
-user_info()
+            except ValueError as e:
+                print(e)
+            
+            
+        score = 0
+        for question in questions:
+            print(separator,"\n", question["question"], "\n")
+            for option in question["options"]:
+                print(option)
+            answer = input("Enter your answer: ").upper()
+
+            if answer == question["answer"]:
+                print(separator)
+                print("              Correct! yeheyy! Tama ka perd Congrats!!")
+                print(separator, "\n")
+                score += 1
+            else:
+                print(separator)
+                print("               Incorrect!! Mali ka! Try again next time parekoy!")
+                print(separator, "\n")
+        print(separator)
+        print("                         Quiz Completed!")
+        print(f"              You got {score} out of {len(questions)} questions correct.")
+        print("                  Thank you for participating!")
+        print(separator)
+
+        file.write(f"Full Name: {' '.join(full_name)}\n")
+        file.write(f"Age: {digit}\n")
+        file.write(f"Course, Year, Section: {cys}\n")
+        file.write(f"Score: {score}/{len(questions)}\n")
+
+user_info(questions)
 
 
-def quiz(questions):
-    score = 0
-    for question in questions:
-        print(separator,"\n", question["question"], "\n")
-        for option in question["options"]:
-            print(option)
-        answer = input("Enter your answer: ").upper()
+# def quiz(questions):
+#     score = 0
+#     for question in questions:
+#         print(separator,"\n", question["question"], "\n")
+#         for option in question["options"]:
+#             print(option)
+#         answer = input("Enter your answer: ").upper()
 
-        if answer == question["answer"]:
-            print(separator)
-            print("              Correct! yeheyy! Tama ka perd Congrats!!")
-            print(separator, "\n")
-            score += 1
-        else:
-            print(separator)
-            print("               Incorrect!! Mali ka! Try again next time parekoy!")
-            print(separator, "\n")
-    print(separator)
-    print("                         Quiz Completed!")
-    print(f"              You got {score} out of {len(questions)} questions correct.")
-    print("                  Thank you for participating!")
-    print(separator)
+#         if answer == question["answer"]:
+#             print(separator)
+#             print("              Correct! yeheyy! Tama ka perd Congrats!!")
+#             print(separator, "\n")
+#             score += 1
+#         else:
+#             print(separator)
+#             print("               Incorrect!! Mali ka! Try again next time parekoy!")
+#             print(separator, "\n")
+#     print(separator)
+#     print("                         Quiz Completed!")
+#     print(f"              You got {score} out of {len(questions)} questions correct.")
+#     print("                  Thank you for participating!")
+#     print(separator)
 
-quiz(questions)
+# quiz(questions)
