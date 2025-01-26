@@ -13,22 +13,39 @@ print(separator)
 typing_animation("=====TYPE THE USER'S FULL NAME TO ACQUIRE THEIR RESULT AND INFORMATION======")
 print(separator)
 
-full_name = input("Enter Full name: ").split()
-user_name = full_name[0] + " " + full_name[1]
 
-found = False
+while True:
+    first_name = input("Enter First name: ")
+    surname = input("Enter Surname: ")
 
-with open("pyquiz_result.txt", "r") as f:
-    for line in f:
-        if user_name in line:
-            found = True
-            typing_animation(f"RESULT FOUND: Result for {user_name}: ")
-            print(line.strip())
-            print("_" * 100)
-            break
+    user_name = first_name + " " + surname
+    found = False
 
-    if not found:
-        print(f"ERROR: THERE IS NO EXISTING RESULT FOR: {user_name}")    
+    with open("pyquiz_result.txt", "r") as f:
+
+        for line in f:
+            if user_name in line:
+                found = True
+                print(separator)
+                typing_animation(f"RESULT FOUND: Result for {user_name}: ")
+                print(line.strip())
+
+                for line in range(6):
+                    try:
+                        print(next(f).strip())
+                    except StopIteration:
+                        break
+                print(separator)
+                break
+
+        if not found:
+            typing_animation(f"ERROR: THERE IS NO EXISTING RESULT FOR: {user_name}")
+    
+    retry = input("Do you want to search again? (Yes/No)").strip().lower()
+    if retry != "yes":
+        break
+
+
 
 
 
