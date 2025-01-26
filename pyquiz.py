@@ -85,5 +85,6 @@ def quiz(questions):
         print(question["question"])
         for option in question["options"]:
             print(option)
-
+        answer = input("Enter your answer: ").upper()
+        
 quiz(questions)
