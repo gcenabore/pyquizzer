@@ -67,7 +67,7 @@ def user_info(questions):
         while True:
             try:
                 full_name = input("Please enter your Full Name: ").split()
-
+                full_name = [name.title() for name in full_name]
                 if len(full_name) < 2 or not all(name.isalpha() for name in full_name):
                     raise ValueError("Invalid: Enter a valid FULL NAME")
 
@@ -107,10 +107,12 @@ def user_info(questions):
         print("                  Thank you for participating!")
         print(separator)
 
+        file.write(separator + "\n")
         file.write(f"Full Name: {' '.join(full_name)}\n")
         file.write(f"Age: {digit}\n")
         file.write(f"Course, Year, Section: {cys}\n")
         file.write(f"Score: {score}/{len(questions)}\n")
+        file.write(separator + "\n")
 
 user_info(questions)
 
