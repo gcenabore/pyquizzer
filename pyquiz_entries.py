@@ -15,8 +15,8 @@ print(separator)
 
 
 while True:
-    first_name = input("Enter First name: ")
-    surname = input("Enter Surname: ")
+    first_name = input("Enter First name: ").capitalize()
+    surname = input("Enter Surname: ").capitalize()
 
     user_name = first_name + " " + surname
     found = False
@@ -32,7 +32,7 @@ while True:
 
                 for line in range(6):
                     try:
-                        print(next(f).strip())
+                        typing_animation(next(f).strip())
                     except StopIteration:
                         break
                 print(separator)
@@ -42,6 +42,7 @@ while True:
             typing_animation(f"ERROR: THERE IS NO EXISTING RESULT FOR: {user_name}")
     
     retry = input("Do you want to search again? (Yes/No)").strip().lower()
+    print(separator)
     if retry != "yes":
         break
 
