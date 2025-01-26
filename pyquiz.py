@@ -72,7 +72,7 @@ start_quiz()
 
 def user_info(questions):
 
-    with open("user_info.txt", "a") as file:
+    with open("pyquiz_result.txt", "a") as file:
         while True:
             try:
                 full_name = input("Please enter your Full Name: ").split()
